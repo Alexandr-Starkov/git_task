@@ -19,15 +19,16 @@ else:
 
     if txt_counter > 0:
         old_word = input(
-            'Введите слово или словосочетание которое нужно заменить: ')
-        new_word = input('Введите слово на которое нужно заменить: ')
+            'Введите слово или словосочетание которое нужно заменить: ').strip().lower()
+        new_word = input(
+            'Введите слово на которое нужно заменить: ').strip().lower()
 
         for file in txt_files:
             full_path = path + '\\' + file
             with open(full_path, 'r', encoding='utf-8') as f:
                 old = f.readlines()
 
-            with open(f'new_{file}', 'w', encoding='utf-8') as f:
+            with open(f'{file}', 'w+', encoding='utf-8') as f:
                 for i in old:
                     if 'черную кожаную курточку' in i.lower():
                         i = i.replace('черную кожаную курточку',
