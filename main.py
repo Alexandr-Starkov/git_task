@@ -1,6 +1,10 @@
 '''Скрипт заменяет исходные слова в файлах на требуемые'''
 import os
 
+
+# Создаем папку output, если она не существует
+os.makedirs('output', exist_ok=True)
+
 try:
     path = input('Введите путь к папке: ')
     files = os.listdir(path)
@@ -24,11 +28,14 @@ else:
             'Введите слово на которое нужно заменить: ').strip().lower()
 
         for file in txt_files:
-            full_path = path + '\\' + file
+            # full_path = path + '\\' + file
+            full_path = os.path.join(path, file)
             with open(full_path, 'r', encoding='utf-8') as f:
                 old = f.readlines()
 
-            with open(f'{file}', 'w+', encoding='utf-8') as f:
+            # Создаем новый путь для сохранения файла в папке output
+            output_file_path = os.path.join('output', file)
+            with open(f'{output_file_path}', 'w+', encoding='utf-8') as f:
                 for i in old:
                     if 'черную кожаную курточку' in i.lower():
                         i = i.replace('черную кожаную курточку',
