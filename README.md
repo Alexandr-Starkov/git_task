@@ -1,1 +1,3 @@
-There should be a description here, but there isn't, because I didn't write it and it's a test project
+- add the files to the input directory
+- write the words or phrases to be replaced
+- the replaced files will appear in the output directory
